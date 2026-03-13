@@ -1,0 +1,58 @@
+CREATE DATABASE tero_germeleen;
+
+CREATE TABLE Customers(  
+customer_id INT PRIMARY KEY,
+  customer_name VARCHAR(50),
+  city VARCHAR(50),
+  membership_level VARCHAR(50),
+  join_date date );
+
+INSERT INTO Customers 
+VALUES (1,'Alice','Cebu','Gold','2025-01-10'), 
+(2,'Bob','Bohol','Silver','2025-01-15'),
+ (3,'Charlie','Cebu','Bronse','2025-02-10'),
+ (4,'Diana','Tagbilaran','Gold','2025-02-10'), 
+ (5,'Ethan','Bohol','Silver','2025-03-01'),
+ (6,'Fiona','Cebu','Gold','2025-03-05'),
+ (7,'George','Tagbilaran','Bronze','2025-03-08'), 
+ (8,'Hannah','Cebu','Silver','2025-04-01'), 
+ (9,'Ian','Bohol','Gold','2025-04-10'),
+ (10,'Julia','Cebu','Bronze','2025-04-15');
+ Select*from Customers;
+
+1.SELECT * FROM Customers
+where city='Cebu';
+
+2.SELECT * FROM Customers
+WHERE membership_level = 'Gold';
+
+3.SELECT * FROM Customers 
+WHERE customer_name LIKE 'A%' OR customer_name LIKE 'D%';
+
+4.SELECT * FROM Customers 
+WHERE city = 'Cebu' AND (membership_level = 'Silver' OR membership_level = 'Gold');
+
+5.SELECT * FROM Customers
+WHERE join_date BETWEEN '2025-02-01' AND '2025-03-31';
+
+6.SELECT * FROM Customers 
+WHERE city IN ('Bohol', 'Tagbilaran') AND membership_level = 'Bronze';
+
+7.SELECT * FROM Customers 
+WHERE LOWER(customer_name) LIKE '%a%';
+
+8.SELECT * FROM Customers 
+WHERE city = 'Cebu' AND membership_level = 'Gold' AND join_date < '2025-03-01';
+
+9.SELECT * FROM Customers 
+WHERE city IN ('Bohol', 'Tagbilaran') 
+AND join_date <= '2025-02-28' 
+AND membership_level IN ('Silver', 'Bronze');
+
+10.SELECT * FROM Customers 
+WHERE customer_id NOT IN (1, 4, 6) AND join_date > '2025-02-28';
+
+11.SELECT * FROM Customers 
+WHERE (join_date BETWEEN '2025-04-01' AND '2025-04-30') 
+AND city IN ('Cebu', 'Bohol') 
+AND membership_level != 'Bronze';
